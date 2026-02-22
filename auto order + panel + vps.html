@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salzz Store - Panel & VPS Terpercaya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF9500;
+            --secondary-color: #FFB74D;
+            --dark-bg: #121212;
+            --card-bg: #1E1E1E;
+            --text-color: #FFFFFF;
+            --light-text: #CCCCCC;
+            --border-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+
+        /* Header Section */
+        .header-container {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+        }
+
+        .store-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 149, 0, 0.5);
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--light-text);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* Divider */
+        .divider {
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            border: none;
+            margin: 20px auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 149, 0, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Panel List */
+        .panel-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .panel-item {
+            background-color: rgba(255, 149, 0, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .panel-item:hover {
+            background-color: rgba(255, 149, 0, 0.2);
+        }
+
+        .panel-spec {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        .panel-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        /* VPS Section */
+        .vps-category {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .vps-category:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .vps-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vps-low { color: #2ECC71; }
+        .vps-medium { color: #F1C40F; }
+        .vps-high { color: #E74C3C; }
+
+        .vps-details {
+            list-style: none;
+            padding-left: 25px;
+            color: var(--light-text);
+        }
+
+        .vps-details li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .vps-details li::before {
+            content: "▪";
+            color: var(--primary-color);
+            position: absolute;
+            left: -15px;
+        }
+
+        /* Order & Payment Section */
+        .order-card {
+            text-align: center;
+        }
+
+        .order-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 149, 0, 0.3);
+        }
+
+        .order-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .payment-item {
+            background-color: rgba(255, 149, 0, 0.1);
+            padding: 15px 20px;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .payment-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 5px;
+        }
+
+        .payment-number {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .payment-note {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            body {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            .store-name {
+                font-size: 2.5rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-container">
+        <h1 class="store-name"><i class="fas fa-store"></i> SALZZ STORE</h1>
+        <p class="tagline">💻 Murah • Stabil • Siap Pakai</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Panel User Card -->
+    <div class="card">
+        <h2 class="card-title"><i class="fas fa-desktop"></i> PANEL USER</h2>
+        <div class="panel-list">
+            <div class="panel-item">
+                <p class="panel-spec">1 GB RAM</p>
+                <p class="panel-price">Rp500</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">2 GB RAM</p>
+                <p class="panel-price">Rp700</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">3 GB RAM</p>
+                <p class="panel-price">Rp800</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">4 GB RAM</p>
+                <p class="panel-price">Rp1.000</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">5 GB RAM</p>
+                <p class="panel-price">Rp1.200</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">6 GB RAM</p>
+                <p class="panel-price">Rp1.500</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">7 GB RAM</p>
+                <p class="panel-price">Rp1.700</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">8 GB RAM</p>
+                <p class="panel-price">Rp2.000</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">9 GB RAM</p>
+                <p class="panel-price">Rp2.300</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">10 GB RAM</p>
+                <p class="panel-price">Rp2.500</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Panels Card -->
+    <div class="card">
+        <h2 class="card-title"><i class="fas fa-rocket"></i> PANEL LAINNYA</h2>
+        <div class="panel-list">
+            <div class="panel-item">
+                <p class="panel-spec">PANEL UNLIMITED</p>
+                <p class="panel-spec">RAM & CPU Unlimited</p>
+                <p class="panel-price">Rp3.000</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">RESELLER PANEL</p>
+                <p class="panel-spec">Bisa Jual Ulang</p>
+                <p class="panel-price">Rp2.300</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">ADMIN PANEL</p>
+                <p class="panel-spec">Manage Server</p>
+                <p class="panel-price">Rp3.000</p>
+            </div>
+            <div class="panel-item">
+                <p class="panel-spec">PT PANEL (PARTNER)</p>
+                <p class="panel-spec">Khusus Partner</p>
+                <p class="panel-price">Rp4.500</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- VPS Section Card -->
+    <div class="card">
+        <h2 class="card-title"><i class="fas fa-server"></i> VIRTUAL PRIVATE SERVER</h2>
+        
+        <div class="vps-category">
+            <h3 class="vps-title vps-low"><i class="fas fa-circle"></i> LOW VPS</h3>
+            <ul class="vps-details">
+                <li>Garansi: 2 Hari untuk suspens</li>
+                <li>Replace: 1x Jika garansi masih aktif</li>
+                <li>Harga: Rp3.000</li>
+            </ul>
+        </div>
+
+        <div class="vps-category">
+            <h3 class="vps-title vps-medium"><i class="fas fa-circle"></i> MEDIUM VPS</h3>
+            <ul class="vps-details">
+                <li>Garansi: 3 Hari</li>
+                <li>Replace: 1x Jika garansi masih aktif</li>
+                <li>Harga: Rp6.500</li>
+            </ul>
+        </div>
+
+        <div class="vps-category">
+            <h3 class="vps-title vps-high"><i class="fas fa-circle"></i> HIGH VPS</h3>
+            <ul class="vps-details">
+                <li>Garansi: 4 Hari</li>
+                <li>Replace: 1x Jika garansi masih aktif</li>
+                <li>Harga: Rp8.000</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Order & Payment Card -->
+    <div class="card order-card">
+        <h2 class="card-title"><i class="fas fa-shopping-cart"></i> CARA PEMESANAN & PEMBAYARAN</h2>
+        <p>Pilih kategori yang Anda inginkan, lalu hubungi kami melalui Telegram:</p>
+        <a href="https://t.me/Salzzewean" target="_blank" class="order-btn"><i class="fab fa-telegram-plane"></i> Hubungi Penjual</a>
+        
+        <div class="payment-methods">
+            <div class="payment-item">
+                <p class="payment-label">DANA</p>
+                <p class="payment-number">083869948172</p>
+            </div>
+            <div class="payment-item">
+                <p class="payment-label">GOPAY</p>
+                <p class="payment-number">083869948172</p>
+            </div>
+        </div>
+
+        <p class="payment-note">*Untuk QRIS, silakan minta kepada owner melalui Telegram</p>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; padding: 20px 0; color: var(--light-text); font-size: 0.8rem;">
+        <p>&copy; 2024 Salzz Store • Semua Hak Dilindungi</p>
+    </div>
+
+    <script>
+        // Animasi saat scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
